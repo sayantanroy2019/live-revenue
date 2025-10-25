@@ -1,0 +1,57 @@
+ENDPOINT -> /liverevenue/:eventId
+
+res data -> {
+topups:{
+    total_top_up_amount,
+    no_of_topups,
+    card_fees,
+    balance,
+    total_upi_payment_amount,
+    total_card_payment_amount,
+    total_cash_payment_amount,
+
+},
+redemptions:{
+    total_redemption_amount,
+    total_rfid_sales
+},
+left_over_amount,
+onsite_refunds:{
+    total_amount,
+    cards_count
+},
+wipe_card:{
+    total_amount,
+    cards_count
+},
+
+total_online_refund_amount,
+
+}
+
+ENDPOINT -> /liverevenue/:eventId/topups 
+
+res data -> {
+total_topups_amount,
+topups:[
+    {
+        name,
+        total_sales,
+        topup_amount
+    }
+]
+}
+
+ENDPOINT -> /liverevenue/:eventId/redemptions 
+
+res data -> {
+total_redemption_amount,
+redemptions:[
+    {
+         name,
+        machines_count,
+        total_orders,
+        total_sale
+    }
+]
+}

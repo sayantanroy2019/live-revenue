@@ -1,0 +1,9 @@
+import axios from 'axios';
+
+export const Axios = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  withCredentials: true, // optional: send cookies if your backend needs it
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
