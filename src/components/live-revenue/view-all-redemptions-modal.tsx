@@ -1,4 +1,4 @@
-import { formatToIndianCurrency } from '@/lib/helper';
+import { formatToIndianCurrency } from '@/src/utils/helper';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { Loader, LucideDownload } from 'lucide-react';
 import Image from 'next/image';

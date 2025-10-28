@@ -1,6 +1,6 @@
 'use client';
 
-import { formatToIndianCurrency } from '@/lib/helper';
+import { formatToIndianCurrency } from '@/src/utils/helper';
 
 import { ITopupsCardData } from '@/src/types/live-revenue-types';
 import Image from 'next/image';

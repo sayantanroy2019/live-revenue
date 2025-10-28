@@ -1,8 +1,8 @@
 import { Card, CardContent, CardTitle } from '@/src/components/ui/card';
 import Image from 'next/image';
 
-import { formatToIndianCurrency } from '@/lib/helper';
 import { IOnSiteRefundData } from '@/src/types/live-revenue-types';
+import { formatToIndianCurrency } from '@/src/utils/helper';
 
 export const OnSiteRefundsCardComponent = ({ data }: { data: IOnSiteRefundData | undefined }) => {
   return (

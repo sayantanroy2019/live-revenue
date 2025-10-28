@@ -1,5 +1,6 @@
-import { formatToIndianCurrency } from '@/lib/helper';
+// import { formatToIndianCurrency } from '@/src/lib/helper';
 import { Card, CardContent, CardTitle } from '@/src/components/ui/card';
+import { formatToIndianCurrency } from '@/src/utils/helper';
 import Image from 'next/image';
 
 export const LeftOverCard = ({ amount = 0 }: { amount: number | undefined }) => {

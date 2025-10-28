@@ -1,5 +1,5 @@
-import { formatToIndianCurrency } from '@/lib/helper';
 import { Card, CardContent, CardTitle } from '@/src/components/ui/card';
+import { formatToIndianCurrency } from '@/src/utils/helper';
 import Image from 'next/image';
 
 import { IWipeCardData } from '@/src/types/live-revenue-types';

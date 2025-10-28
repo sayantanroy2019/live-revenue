@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
-import { formatToIndianCurrency } from '@/lib/helper';
 import { IRedemptionsData } from '@/src/types/live-revenue-types';
+import { formatToIndianCurrency } from '@/src/utils/helper';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ViewAllRedemptionssModal } from './view-all-redemptions-modal';
 

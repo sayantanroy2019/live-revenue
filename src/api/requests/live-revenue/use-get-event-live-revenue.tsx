@@ -1,14 +1,37 @@
 import { Axios } from '@/src/api/axios-config';
 import { useQuery } from '@tanstack/react-query';
 
-const GetEventLiveRevenue = async ({ eventId }: { eventId: string }) => {
+// 🔹 Fetch Function
+const GetEventLiveRevenue = async ({
+  eventId,
+  startDate,
+  endDate,
+}: {
+  eventId: string;
+  startDate?: string;
+  endDate?: string;
+}) => {
   try {
     if (!eventId) return;
-    const response = await Axios.get(`/liverevenue/${eventId}`);
-    console.log(response.data);
-    return response.data; // successful response
+
+    // If startDate exists but endDate doesn’t, default both to same date
+    if (startDate && !endDate) endDate = startDate;
+
+    // ✅ Build raw query string manually — no encoding
+    let url = `/liverevenue/${eventId}`;
+    if (startDate && endDate) {
+      url += `?startDate=${startDate}&endDate=${endDate}`;
+    } else if (startDate) {
+      url += `?startDate=${startDate}`;
+    }
+
+    console.log('📡 Fetching:', url);
+
+    const response = await Axios.get(url);
+    console.log(`✅ Response for ${eventId}:`, response.data);
+
+    return response.data;
   } catch (error: any) {
-    // console.log(error);
     if (error.response) {
       throw new Error(error.response.data?.error || 'Server responded with an error');
     } else if (error.request) {
@@ -19,10 +42,19 @@ const GetEventLiveRevenue = async ({ eventId }: { eventId: string }) => {
   }
 };
 
-export const useGetEventLiveRevenue = ({ eventId }: { eventId: string }) => {
+// 🔹 React Query Hook
+export const useGetEventLiveRevenue = ({
+  eventId,
+  startDate,
+  endDate,
+}: {
+  eventId: string;
+  startDate?: string;
+  endDate?: string;
+}) => {
   return useQuery({
-    queryKey: ['get-event-live-revenue', { eventId }],
-    queryFn: () => GetEventLiveRevenue({ eventId }),
+    queryKey: ['get-event-live-revenue', { eventId, startDate, endDate }],
+    queryFn: () => GetEventLiveRevenue({ eventId, startDate, endDate }),
     enabled: !!eventId,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
