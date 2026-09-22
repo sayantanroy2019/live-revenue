@@ -14,9 +14,21 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. If port 3000 is already in use, Next.js picks the next free port and prints it in the terminal.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The root URL redirects to the dashboard at `/live-revenue/<eventId>`.
+
+## Mock data (no backend needed)
+
+With no `NEXT_PUBLIC_API_BASE_URL` set, the app serves built-in mock data from the route handlers under `src/app/liverevenue/`. Edit the figures in `src/mocks/live-revenue-mock.ts`. The date filter scales the totals so you can see it working.
+
+To use the real backend, create `.env.local` with:
+
+```bash
+NEXT_PUBLIC_API_BASE_URL=https://your-backend-host
+```
+
+and restart the dev server. Requests then go to the backend and the mock handlers are bypassed.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
